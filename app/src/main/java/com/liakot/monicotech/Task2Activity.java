@@ -14,6 +14,8 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.Polyline;
+import com.google.android.gms.maps.model.PolylineOptions;
 
 public class Task2Activity extends FragmentActivity implements OnMapReadyCallback {
 
@@ -48,5 +50,13 @@ public class Task2Activity extends FragmentActivity implements OnMapReadyCallbac
         this.gMap.moveCamera(CameraUpdateFactory.newLatLng(dhaka));
         CameraUpdate zoom=CameraUpdateFactory.zoomTo(13);
         gMap.animateCamera(zoom);
+
+
+//        String url = "https://maps.googleapis.com/maps/api/directions/json?" +"origin=" + loc1.latitude + "," + loc1.longitude+ "&" +"destination=" + loc5.latitude + "," + loc5.longitude +"&sensor=false&units=metric&mode=driving" + "&" + "key=AIzaSyCGqle8VO-WW4oYhkj6itfRTn3yb8IzZUE";
+//
+//        Polyline polyline1 = googleMap.addPolyline(new PolylineOptions()
+//                .clickable(true)
+//                .addAll(latlngList));
+
     }
 }

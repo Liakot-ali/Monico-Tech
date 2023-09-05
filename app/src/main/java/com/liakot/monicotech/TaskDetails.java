@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 public class TaskDetails extends AppCompatActivity {
 
-    TextView title, id, userId, complete, delete;
+    TextView title, id, userId, complete;
     String todo_title;
     String todo_id, todo_user_id;
     String todo_complete;
@@ -19,12 +19,6 @@ public class TaskDetails extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_task_details);
         InitializeAll();
-        delete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
 
     }
 
@@ -39,7 +33,6 @@ public class TaskDetails extends AppCompatActivity {
         id = findViewById(R.id.details_id);
         userId = findViewById(R.id.details_used_id);
         complete = findViewById(R.id.details_completed);
-        delete = findViewById(R.id.details_delete);
 
         Log.e("Details", "InitializeAll: " + todo_title + " " + todo_id + " " + todo_user_id + " " + todo_complete);
 

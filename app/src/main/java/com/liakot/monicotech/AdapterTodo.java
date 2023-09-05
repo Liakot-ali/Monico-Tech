@@ -1,7 +1,9 @@
 package com.liakot.monicotech;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.text.format.DateFormat;
@@ -28,11 +30,12 @@ public class AdapterTodo extends RecyclerView.Adapter<AdapterTodo.ViewHolder>{
 
     //------To hold every list item view------
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView title;
+        TextView title, delete;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             title = itemView.findViewById(R.id.item_title);
+            delete = itemView.findViewById(R.id.item_delete);
         }
     }
 
@@ -59,6 +62,22 @@ public class AdapterTodo extends RecyclerView.Adapter<AdapterTodo.ViewHolder>{
 
         Log.e("SEEN", "onBindViewHolder: " + id + " " + userId +  " " + completed);
         holder.title.setText(arrayList.get(position).getTitle());
+        holder.delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder dialog = new AlertDialog.Builder(activityContext);
+                dialog.setTitle("Are you sure?");
+                dialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        arrayList.remove(position);
+                        notifyDataSetChanged();
+                    }
+                }).setNegativeButton("No", null);
+                dialog.setCancelable(true);
+                dialog.show();
+            }
+        });
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
